@@ -58,6 +58,7 @@
     height: 100vh;
     z-index: 0;
     cursor: crosshair;
+    touch-action: none;
   }
   /* (body::before weave overlay removed — it dimmed the GoL canvas. The canvas
      draws its own faint diamond ground.) */
@@ -348,6 +349,10 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><g stroke='%23f6921e' stroke-width='1.6' stroke-linecap='square' fill='none'><path d='M0 0 L2 2 M5 0 L3 2 M0 5 L2 3 M5 5 L3 3'/></g></svg>");
     -webkit-text-stroke-color: var(--orange);
   }
+  .woven--olive {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><g stroke='%235d8d47' stroke-width='1.6' stroke-linecap='square' fill='none'><path d='M0 0 L2 2 M5 0 L3 2 M0 5 L2 3 M5 5 L3 3'/></g></svg>");
+    -webkit-text-stroke-color: var(--olive);
+  }
 
   h1 {
     font-family: "Fraunces", serif;
@@ -564,6 +569,7 @@
     justify-content: center;
   }
   .loom .invocation {
+    pointer-events: auto;
     font-family: "Fraunces", serif;
     font-style: italic;
     font-weight: 400;
@@ -857,7 +863,7 @@
        the GoL to be the page's main content. One italic inscription floats
        at the centre; everything else is living lace. -->
   <section class="loom" aria-label="freedom. democracy. internet">
-    <p class="invocation"><em style="color:var(--orange)">freedom</em><br /><span style="color:var(--blue)">democracy</span><br /><span style="color:var(--olive)">internet</span></p>
+    <p class="invocation"><em class="woven woven--orange">freedom</em><br /><span class="woven">democracy</span><br /><span class="woven woven--olive">internet</span></p>
   </section>
 
   <!-- COLOPHON — quiet credits, opening directly off the loom. -->
