@@ -362,7 +362,10 @@
     letter-spacing: -0.025em;
     margin: 0 0 18px;
     color: var(--thread);
+    overflow-wrap: normal;
+    word-break: normal;
   }
+  .hero h1 .woven { display: block; }
   h1 em {
     font-style: italic;
     font-weight: 700;
@@ -708,7 +711,15 @@
        (auto-adjusted by the mobile media query at root level). */
     .medallion .lk-inner { padding: 18px 16px 12px; }
 
-    h1 { font-size: clamp(40px, 13vw, 64px); }
+    h1 {
+      font-size: clamp(36px, 11.2vw, 56px);
+      line-height: 0.96;
+      letter-spacing: -0.015em;
+    }
+    h1 .sub {
+      font-size: 0.3em;
+      margin-top: 10px;
+    }
     p.lead { font-size: 18px; }
     .dateline { font-size: 17px; }
     .schedule { font-size: 17px; }
