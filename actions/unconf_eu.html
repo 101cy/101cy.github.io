@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ReFLOSS EU 101.CY — The other Cyprus tech event</title>
+<title>Freedom. Democracy. Internet — 101.CY Unconference 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -489,9 +489,9 @@
   .schedule li {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    align-items: end;
+    align-items: baseline;
     gap: 0 12px;
-    padding: 2px 0;
+    padding: 6px 0;
   }
   .schedule .t {
     font-variant-numeric: oldstyle-nums;
@@ -502,14 +502,58 @@
   }
   .schedule .dots {
     border-bottom: 1.5px dotted rgba(0,52,158,0.35);
-    transform: translateY(-7px);
     height: 0;
+    align-self: center;
+    transform: translateY(2px);
   }
   .schedule .e {
     color: var(--thread);
-    white-space: nowrap;
+    max-width: 45ch;
   }
   .schedule .e em { font-style: italic; color: var(--thread-2); }
+
+  /* Week schedule — richer entries with venue on a second line */
+  .schedule.week li { align-items: first baseline; }
+  .schedule.week .dots { align-self: baseline; }
+  .schedule.week .t {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .schedule.week .t .time {
+    font-style: normal;
+    font-size: 0.8em;
+    font-weight: 400;
+    color: var(--thread-2);
+    margin-top: 1px;
+  }
+  .schedule.week .e { text-align: right; max-width: none; }
+  .schedule.week .e em {
+    display: block;
+    font-size: 0.85em;
+    margin-top: 1px;
+    line-height: 1.4;
+  }
+  .schedule.week .e a {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(0,52,158,0.45);
+  }
+  .schedule.week .e a:hover { border-bottom-style: solid; }
+  /* Keep inline text links visually consistent across sections */
+  .lk-inner p a,
+  .lk-inner li a,
+  .roll a {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(0,52,158,0.45);
+  }
+  .lk-inner p a:hover,
+  .lk-inner li a:hover,
+  .roll a:hover { border-bottom-style: solid; }
+  /* Highlight the unconference day */
+  .schedule.week li.focal .t { color: var(--blue); font-weight: 700; }
+  .schedule.week li.focal .e b { color: var(--blue); }
 
   .two-col {
     display: grid;
@@ -595,7 +639,7 @@
      in italic with a single centred diamond separating the two halves. */
   .colophon {
     margin: 0;
-    padding: 36px 56px 56px;
+    padding: 36px 56px 28px;
     background-color: var(--linen);
     font-family: "Fraunces", serif;
     font-style: italic;
@@ -633,7 +677,7 @@
     letter-spacing: 0.04em;
   }
   @media (max-width: 720px) {
-    .colophon { padding: 28px 16px 40px; font-size: 14px; }
+    .colophon { padding: 28px 16px 20px; font-size: 14px; }
   }
 
   /* ===== Mobile composition =====
@@ -695,17 +739,17 @@
     <span class="corner tl"></span><span class="corner tr"></span>
     <span class="corner bl"></span><span class="corner br"></span>
     <div class="lk-inner">
-      <p class="eyebrow">A gathering inside the <em>Cyprus Open Digital Futures Week</em>, on the day when European digital policy turns its eyes toward the island.</p>
       <h1>
-        <span class="woven">ReFLOSS</span>
-        <em class="woven woven--orange">EU 101.CY</em>
-        <span class="sub">— the other Cyprus tech event</span>
+        <span class="woven">Freedom.</span>
+        <span class="woven woven--orange">Democracy.</span>
+        <span class="woven woven--olive">Internet.</span>
+        <span class="sub">Cyprus EU Presidency edition, 2026</span>
       </h1>
       <p class="lead">An unconference for conscientious and democratically-grounded tech policy — in Cyprus and beyond.</p>
 
       <p class="dateline">
         <span class="day">Monday, 15 June 2026.</span>
-        Nicosia, <em>venue to be announced</em>. An open space gathered from 10:30 until 18:00,
+        <a href="https://cyens.org.cy/" target="_blank" rel="noopener">CYENS</a>, Nicosia. An open space gathered from 10:30 until 18:00,
         in the format of participant-led sessions and a potluck table at midday.
       </p>
     </div>
@@ -725,13 +769,16 @@
     <div class="lk-inner">
       <h2 class="with-motif"><span class="woven">An invitation</span></h2>
       <p>
-        ReFLOSS EU 101.CY is an invitation to come together in a moment of European digital policy visibility.
+        Part of the <em><span class="hl">Cyprus Open Digital Futures Week</span></em>, gathering as European digital policy turns its eyes toward the island.
+      </p>
+      <p>
+        This is an invitation to come together in a moment of European digital policy visibility.
         The current landscape increasingly focuses on cybersecurity, AI development, and national or EU-first
         <span class="hl">digital sovereignty metrics</span> — and in doing so, risks overlooking the deeper questions
         that shape our collective technological futures.
       </p>
       <p>
-        How do we make decisions about our technological future in a way that is inclusive, transparent, and
+        How do we make decisions regarding our technological future in a way that is inclusive, transparent, and
         human-centered rather than institutional? What kind of digital futures are we building? And how do we
         address the systemic pressures — lobbying, institutional inertia, internal fragmentation — that continue
         to challenge the FLOSS and digital commons ecosystems from within?
@@ -739,7 +786,9 @@
       <p>
         On <b>June 15th 2026</b>, as Cyprus and Nicosia become the setting of European Digital Policy, we pull threads
         together and invite individuals and communities that believe in open and freedom-respecting technologies to
-        gather and coordinate in a spirit of <em>informal productivity</em>.
+        gather and coordinate in a spirit of informal productivity, to give pulse to a week of activities hosted by the
+        Cyprus Presidency of the Council of the EU, and make sure that the most important and urgent digital commons
+        and digital rights-debates are brought into the conversation.
       </p>
     </div>
   </section>
@@ -750,10 +799,16 @@
   <section class="lk">
     <div class="lk-inner">
       <h2 class="with-motif"><span class="woven">What we centre</span></h2>
-      <div class="two-col">
+      <p>
+        We seek to centre digital rights, digital sovereignty understood as public capacity rather than control,
+        and the digital commons as a shared infrastructure of care and governance. In doing so, we challenge
+        extractive and opaque models of technological development, and instead nurture free, fair, and participatory
+        systems for governance, security, education, and life.
+      </p>
+      <div class="two-col" style="margin-top:24px;">
         <div>
           <h3>Digital rights</h3>
-          <p>Protection of fundamental freedoms in digital space — from the Right to Repair to the Right to live Offline.</p>
+          <p>Protection of fundamental freedoms in digital space — from the Right to Repair to the Right to live Smartphone free.</p>
         </div>
         <div>
           <h3>Digital sovereignty</h3>
@@ -777,6 +832,7 @@
   <section class="lk">
     <div class="lk-inner">
       <h2 class="with-motif"><span class="woven">An initial programme</span></h2>
+      <p class="eyebrow">Monday, 15 June 2026 at <a href="https://cyens.org.cy/" target="_blank" rel="noopener">CYENS</a>, Nicosia.</p>
       <ul class="schedule">
         <li><span class="t">10:30</span><span class="dots"></span><span class="e">Gathering</span></li>
         <li><span class="t">11:00</span><span class="dots"></span><span class="e">Kick-off</span></li>
@@ -805,8 +861,73 @@
         <li>Co-writing an Open Letter on the Age Verification Pilot debates.</li>
         <li>Reflecting on the Digital Sovereignty Report.</li>
         <li>Putting Open Source &amp; Digital Rights on the local Civil Society radar.</li>
-        <li>Addressing Digital Coercion — the Right to live Offline.</li>
-        <li>Digital ID &amp; Digital Euro (with epicenter.works).</li>
+        <li>Addressing Digital Coercion — Right to stay Offline / live Smartphone free</li>
+        <li>Digital ID &amp; Digital Euro (with <a href="https://epicenter.works" target="_blank" rel="noopener">epicenter.works</a>).</li>
+      <li>Procurement — Where we left off with the Auditor General’s office</li>
+      </ul>
+      <p style="margin-top:18px; font-style:italic; color:var(--thread-2); font-family:'Fraunces',serif; max-width:54ch;">
+        Preparation reading:
+        <a href="https://cyprus-presidency.consilium.europa.eu/media/yklh0cxl/final_programme_eucypresidency_en.pdf" target="_blank" rel="noopener">Programme of the Cyprus Presidency of the EU</a>.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" aria-hidden="true">
+
+  <!-- LIVE AGENDA — Framed for prominence -->
+  <section class="lk framed banded">
+    <span class="side l"></span><span class="side r"></span>
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="lk-inner" style="text-align: center;">
+      <h2 class="with-motif" style="justify-content: center;"><span class="woven">Live Agenda</span></h2>
+      <p>
+        Shape the conversation before we meet. Add your proposals and coordinate sessions
+        on our shared workspace:
+      </p>
+      <p style="margin-top: 20px;">
+        <a href="https://cryptpad.fr/doc/#/2/doc/view/DMKIwm6OvfDNBXcTr3qn4qwRDIOtEVuCP9tcLPt0Y4U/"
+           target="_blank" rel="noopener"
+           style="font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--blue); text-decoration: none; border: 2px solid var(--blue); padding: 12px 24px; display: inline-block;">
+          Open Live Agenda
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" aria-hidden="true">
+
+  <!-- WHAT TO EXPECT -->
+  <section class="lk">
+    <div class="lk-inner">
+      <h2 class="with-motif"><span class="woven">What to expect</span></h2>
+      <ul class="bare">
+        <li>A fluid, minimally guided, participant-led networking, brainstorming, and co-working atmosphere following Open Space Technology.</li>
+        <li>Space for panels, co-writing labs, workshops, and policy roundtables.</li>
+        <li>Emphasis on dialogue, transparency, and co-creation.</li>
+      </ul>
+
+      <h3 style="margin-top:22px;">What Open Space can look like</h3>
+      <p class="roll" style="margin-top:8px;">
+        <span class="name"><a href="https://youtu.be/XCPZ5iQLlnA?si=8q3l7NRx6_06FR3_" target="_blank" rel="noopener">The Basics</a></span><span class="sep"></span>
+        <span class="name"><a href="https://youtu.be/WQj12jmLGr4?si=AM660pl2L7BUAZVX" target="_blank" rel="noopener">The potential</a></span>
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" aria-hidden="true">
+
+  <!-- THE WEEK -->
+  <section class="lk">
+    <div class="lk-inner">
+      <h2 class="with-motif"><span class="woven">Cyprus Open Digital Futures Week</span></h2>
+      
+      <ul class="schedule week">
+        <li><span class="t">June 13</span><span class="dots"></span><span class="e"><b>Kick-off BBQ</b><em>Pykni Picnic Site, Paphos</em></span></li>
+        <li><span class="t">June 14</span><span class="dots"></span><span class="e"><b>Libre Art @ NeMe</b><em><a href="https://neme.org" target="_blank" rel="noopener">NeMe Arts Centre</a>, Limassol</em></span></li>
+        <li><span class="t">June 15</span><span class="dots"></span><span class="e"><b>Freedom. Democracy. Internet.</b><em>Unconference at <a href="https://cyens.org.cy/" target="_blank" rel="noopener">CYENS</a>, Nicosia</em></span></li>
+        <li><span class="t">June 16</span><span class="dots"></span><span class="e"><b>Open Source & the EU</b><em><a href="https://openforumeurope.org/events/open-source-and-the-european-union-cyprus-ofe-capital-series/" target="_blank" rel="noopener">OFE Capital Series</a> at <a href="https://www.cyi.ac.cy/" target="_blank" rel="noopener">The Cyprus Institute</a>, Nicosia — registration required</em></span></li>
+        <li><span class="t">June 17–18</span><span class="dots"></span><span class="e"><b>Shaping the Next Digital Frontier</b><em><a href="https://cy26digitalconference.com/" target="_blank" rel="noopener">Official Presidency Conference</a>, Nicosia — registration required</em></span></li>
       </ul>
     </div>
   </section>
@@ -818,31 +939,39 @@
     <div class="lk-inner">
       <h2 class="with-motif"><span class="woven">Who we call together</span></h2>
       <p>
-        FLOSS developers, educators, researchers, creatives, community organisers; people interested in co-creating
-        ethical digital policy and resilient community tech; practitioners and policy-makers looking to move toward
-        grounded, implementable strategies for digital justice.
+        This is an open invitation to people who think and work toward digital rights and the democratisation of
+        technology: FLOSS developers, educators, researchers, creatives, and community organisers; people co-creating
+        ethical digital policy and resilient community tech; people mapping obstacles and opportunities for Free/Libre
+        software in public institutions, schools, and cultural spaces; practitioners and policy-makers looking to move
+        toward grounded, implementable strategies for digital justice.
       </p>
 
       <h3 style="margin-top:20px;">Locally</h3>
       <p class="roll">
-        <span class="name">Ubuntu.cy</span><span class="sep"></span>
-        <span class="name">ELLAK Cyprus</span><span class="sep"></span>
-        <span class="name">hack66</span><span class="sep"></span>
+        <span class="name"><a href="http://www.ubuntucy.org" target="_blank" rel="noopener">Ubuntu.cy</a></span><span class="sep"></span>
+        <span class="name"><a href="https://ellak.org.cy" target="_blank" rel="noopener">ELLAK Cyprus</a></span><span class="sep"></span>
+        <span class="name"><a href="https://hack66.101.cy" target="_blank" rel="noopener">hack66</a></span><span class="sep"></span>
         <span class="name">Hackerspace Limassol</span><span class="sep"></span>
         <span class="name">Cyprus Pirate movement</span><span class="sep"></span>
-        <span class="name">101.cy</span><span class="sep"></span>
-        <span class="name">NeMe.org</span><span class="sep"></span>
-        <span class="name">UCY &amp; CUT</span><span class="sep"></span>
-        <span class="name">Deputy Ministry of Research, Innovation &amp; Tech Policy</span>
+        <span class="name"><a href="https://101.cy" target="_blank" rel="noopener">101.cy</a></span><span class="sep"></span>
+        <span class="name"><a href="https://neme.org" target="_blank" rel="noopener">NeMe.org</a></span><span class="sep"></span>
+        <span class="name"><a href="https://www.ucy.ac.cy/" target="_blank" rel="noopener">UCY</a>, <a href="https://www.cut.ac.cy/?languageId=1" target="_blank" rel="noopener">CUT</a> &amp; local universities</span><span class="sep"></span>
+        <span class="name">Local NGOs</span><span class="sep"></span>
+        <span class="name"><a href="https://www.gov.cy/dmrid/en/" target="_blank" rel="noopener">Deputy Ministry of Research, Innovation &amp; Tech Policy</a></span>
       </p>
 
       <h3 style="margin-top:18px;">Internationally</h3>
       <p class="roll intl">
-        <span class="name">Freedom not Fear<span class="where">BE</span></span><span class="sep"></span>
-        <span class="name">EDRi<span class="where">BE</span></span><span class="sep"></span>
-        <span class="name">homo digitalis<span class="where">GR</span></span><span class="sep"></span>
-        <span class="name">digitalcourage<span class="where">DE</span></span>
+        <span class="name"><a href="https://freedomnotfear.org/" target="_blank" rel="noopener">Freedom not Fear</a><span class="where">BE</span></span><span class="sep"></span>
+        <span class="name"><a href="https://edri.org/" target="_blank" rel="noopener">EDRi</a><span class="where">BE</span></span><span class="sep"></span>
+        <span class="name"><a href="https://homodigitalis.gr/" target="_blank" rel="noopener">homo digitalis</a><span class="where">GR</span></span><span class="sep"></span>
+        <span class="name"><a href="https://digitalcourage.de/" target="_blank" rel="noopener">digitalcourage</a><span class="where">DE</span></span>
       </p>
+      <h3 style="margin-top:18px;">Previous unconferences</h3>
+      <ul class="bare">
+        <li><a href="https://101.cy/actions/unconf_reclaim.html" target="_blank" rel="noopener">Cyprus Tech Policy Unconference: Reclaiming the Digital Commons (2025)</a></li>
+        <li><a href="https://fineartuniccy.wordpress.com/conferences-and-academic-meetings/free-and-open-source-technologies-arts-and-commoning-practices-an-unconference-about-art-design-technology-making-cities-and-their-communities/" target="_blank" rel="noopener">Free/libre technologies, art &amp; the commons (Unconference 2019)</a></li>
+      </ul>
     </div>
   </section>
 
@@ -862,23 +991,24 @@
   <!-- THE LOOM — a viewport-tall openwork field. The cloth pauses here for
        the GoL to be the page's main content. One italic inscription floats
        at the centre; everything else is living lace. -->
-  <section class="loom" aria-label="freedom. democracy. internet">
-    <p class="invocation"><em class="woven woven--orange">freedom</em><br /><span class="woven">democracy</span><br /><span class="woven woven--olive">internet</span></p>
+  <section class="loom" aria-label="weaving digital futures">
+    <p class="invocation"><em class="woven woven--orange">weaving</em><br /><span class="woven">digital</span><br /><span class="woven woven--olive">futures</span></p>
   </section>
 
   <!-- COLOPHON — quiet credits, opening directly off the loom. -->
   <footer class="colophon">
     <p class="credits">
-      Organised with the support of NGI Zero — NLnet and the European Commission —
-      and the Brno University of Technology; in concert with
-      ELLAK.org.cy, NeMe.org, 101.CY, and hack66.
+      Organised with the support of
+      <a href="https://ngi.eu" target="_blank" rel="noopener">Next Generation Internet Zero (NGI0)</a>, by <a href="https://nlnet.nl" target="_blank" rel="noopener">NLnet</a> and the <a href="https://commission.europa.eu" target="_blank" rel="noopener">European Commission</a>,
+      and the <a href="https://www.vut.cz/en/" target="_blank" rel="noopener">Brno University of Technology</a>; in concert with
+      <a href="https://ellak.org.cy" target="_blank" rel="noopener">ELLAK.org.cy</a>, <a href="https://neme.org" target="_blank" rel="noopener">NeMe.org</a>, <a href="https://101.cy" target="_blank" rel="noopener">101.CY</a>, and <a href="https://hack66.101.cy" target="_blank" rel="noopener">hack66</a>.
     </p>
     <p class="contact">
-      <a href="https://matrix.to/#/#ellakcy:matrix.org">#ellakcy:matrix.org</a>
+      <a href="https://matrix.to/#/#ellakcy:matrix.org" target="_blank" rel="noopener">#ellakcy:matrix.org</a>
       <span class="dot" aria-hidden="true"></span>
       <a href="tel:+35799586369">+357 99 586369</a>
     </p>
-    <p class="signoff">Nicosia, Cyprus &nbsp;·&nbsp; 15 June 2026</p>
+    <p class="signoff">15 June 2026 | <a href="https://cyens.org.cy/" target="_blank" rel="noopener">CYENS</a>, Nicosia</p>
   </footer>
 
   <!-- Closing korníza — the cloth's bottom hem, flush at the very end. -->
