@@ -405,7 +405,7 @@
 
   /* Body type — set "into" the linen with a hairline white riser and a faint
      blue depression beneath, so glyphs read as pressed into cloth. */
-  p, li, .dateline, .schedule, .roll, .eyebrow {
+  p, li, .dateline, .hero-intro, .schedule, .roll, .eyebrow {
     text-shadow:
       0 1px 0 rgba(255,255,255,0.55),
       0 -0.5px 0 rgba(0,52,158,0.07);
@@ -447,6 +447,15 @@
   }
   .dateline .day a:hover { border-bottom-style: solid; }
   .dateline em { font-style: italic; color: var(--thread); }
+  .hero .hero-intro {
+    margin: 20px 0 0;
+    max-width: 54ch;
+    font-family: "Fraunces", serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--thread-2);
+  }
+  .hero .hero-intro em { font-style: italic; color: var(--orange); }
   .dateline .rsvp {
     display: block;
     margin-top: 8px;
@@ -727,7 +736,7 @@
       margin-top: 10px;
     }
     p.lead { font-size: 18px; }
-    .dateline { font-size: 17px; }
+    .dateline, .hero .hero-intro { font-size: 17px; }
     .schedule { font-size: 17px; }
     .roll { font-size: 17px; }
   }
@@ -769,6 +778,9 @@
         An open space gathered from 10:30 until 18:00,
         in the format of participant-led sessions and a potluck table at midday.
       </p>
+      <p class="hero-intro">
+        The Freedom. Democracy. Internet Unconference is part of the <em><span class="hl">Cyprus Open Digital Futures Week</span></em> and the latest in a series of local unconferences (open space gatherings with an emergent agenda) aiming towards conscientious and democratically-grounded tech policy, in Cyprus and beyond.
+      </p>
     </div>
   </section>
 
@@ -786,19 +798,11 @@
     <div class="lk-inner">
       <h2 class="with-motif"><span class="woven">An invitation</span></h2>
       <p>
-        Freedom. Democracy. Internet Unconference is part of the <em><span class="hl">Cyprus Open Digital Futures Week</span></em> and the latest in a series of local unconferences (open space gatherings with an emergent agenda) aiming towards conscientious and democratically-grounded tech policy, in Cyprus and beyond.
+        This is an invitation to come together in a moment of European digital policy visibility. The current policy landscape increasingly focuses on cybersecurity, AI development, and national or EU-first digital sovereingty metrics. In doing so, it risks overlooking the deeper questions that shape our collective technological futures. 
       </p>
       <p>
-        This is an invitation to come together in a moment of European digital policy visibility.
-        The current landscape increasingly focuses on cybersecurity, AI development, and national or EU-first
-        <span class="hl">digital sovereignty metrics</span> — and in doing so, risks overlooking the deeper questions
-        that shape our collective technological futures.
-      </p>
-      <p>
-        How do we make decisions regarding our technological future in a way that is inclusive, transparent, and
-        human-centered rather than institutional? What kind of digital futures are we building? And how do we
-        address the systemic pressures — lobbying, institutional inertia, internal fragmentation — that continue
-        to challenge the FLOSS and digital commons ecosystems from within?
+        How do we make decisions regarding our technological future in a way that is inclusive, transparent, and human-centered rather than institutional? What kind of digital futures are we building? And how do we address the systemic pressures, lobbying, institutional inertia, and internal fragmentation, that continue to challenge the FLOSS and digital commons ecosystems from within? 
+
       </p>
       <p>
         On <b>June 15th 2026</b>, as Cyprus and Nicosia become the setting of European Digital Policy, we pull threads
