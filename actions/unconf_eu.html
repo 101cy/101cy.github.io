@@ -936,17 +936,26 @@
   <hr class="divider" aria-hidden="true">
 
   <!-- THE WEEK -->
-  <section class="lk">
+  <section class="lk week-focus">
     <div class="lk-inner">
       <h2 class="with-motif"><span class="woven">Cyprus Open Digital Futures Week</span></h2>
       
       <ul class="schedule week">
         <li><span class="t">June 13</span><span class="dots"></span><span class="e"><b>Kick-off BBQ</b><em>Pykni Picnic Site, Paphos</em></span></li>
         <li><span class="t">June 14</span><span class="dots"></span><span class="e"><b>Libre Art @ NeMe</b><em><a href="https://neme.org" target="_blank" rel="noopener">NeMe Arts Centre</a>, Limassol</em></span></li>
-        <li><span class="t">June 15</span><span class="dots"></span><span class="e"><b>Freedom. Democracy. Internet.</b><em>Unconference at <a href="https://cyens.org.cy/" target="_blank" rel="noopener">CYENS</a>, Nicosia</em></span></li>
+        <li class="focal"><span class="t">June 15</span><span class="dots"></span><span class="e"><b>Freedom. Democracy. Internet.</b><em>Unconference at <a href="https://cyens.org.cy/" target="_blank" rel="noopener">CYENS</a>, Nicosia</em></span></li>
         <li><span class="t">June 16</span><span class="dots"></span><span class="e"><b>Open Source & the EU</b><em><a href="https://openforumeurope.org/events/open-source-and-the-european-union-cyprus-ofe-capital-series/" target="_blank" rel="noopener">OFE Capital Series</a> at <a href="https://www.cyi.ac.cy/" target="_blank" rel="noopener">The Cyprus Institute</a>, Nicosia — registration required</em></span></li>
         <li><span class="t">June 17–18</span><span class="dots"></span><span class="e"><b>Shaping the Next Digital Frontier</b><em><a href="https://cy26digitalconference.com/" target="_blank" rel="noopener">Official Presidency Conference</a>, Nicosia — registration required</em></span></li>
       </ul>
+
+      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px dashed rgba(0,52,158,0.25);">
+        <h3 style="font-size: 18px; margin: 0 0 12px;">Libre Art @ NeMe — Sunday 14 June, 19:00</h3>
+        <p style="font-style: italic; color: var(--thread-2);">An informal night dedicated to libre and open source art.</p>
+        <p>As Cyprus prepares to wrap up its EU Presidency contributing to the management of our technological futures, the local Free and Open Source community calls to all of our friends to gather and reinforce paradigms where libre culture, including but also beyond software, provides viable and hopeful alternatives of openness, transparency, repair, autonomy, and meaningful participation.</p>
+        <p>Bring your own bottle &amp; snacks, glitches, noise, visuals, code, zines and posters, performances, unfinished experiments, strange tools, old laptops, hacked devices, impossible ideas, spontaneous live interventions, beautiful failures, conversations, pirate aesthetics, digital disobedience, awkward prototypes, collective imagination and temporary autonomous atmospheres.</p>
+        <p>We come together to explore what artistic practice can look like beyond platform capitalism, algorithmic predictability, surveillance culture, and locked-down creative tools.</p>
+        <p>Part of the Cyprus Open Digital Futures Week &mdash; <a href="https://cryptpad.fr/doc/#/2/doc/edit/HmCpT6KpBnbi2lZDWBgSRung/" target="_blank" rel="noopener">thoughts &amp; suggestions welcome</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -1304,27 +1313,46 @@
     }
     ctx.stroke();
 
-    // Live cells — solid filled squares (= diamonds after rotation)
+    // Glitch zone: cells behind the week panel render in high-voltage palette
+    const weekFocus = document.querySelector('.week-focus');
+    const glitchRect = weekFocus ? weekFocus.getBoundingClientRect() : null;
+    const cos = Math.cos(Math.PI / 4), sin = Math.sin(Math.PI / 4);
+    const glitchColors = ['#ff00ff', '#00ffff', '#ffff00', '#00ff88'];
+
     for (let x = 0; x < cols; x++) {
       for (let y = 0; y < rows; y++) {
         if (!grid[x][y]) continue;
         const px = -halfW + x * CELL;
         const py = -halfH + y * CELL;
-        const a = age[x][y];
 
-        // Color by age + a stable checker-mix so the lace reads "two-colour thread"
-        const checker = ((x + y) & 1);
-        let fill;
-        // Cyprus Presidency thread palette: orange→amber for new births,
-        // settling into blue, with olive accents on the long-stable cells.
-        if (a < 2)       fill = checker ? '#f6921e' : '#ffca05'; // fresh orange + sun-yellow
-        else if (a < 6)  fill = checker ? '#fcb813' : '#f9a51a'; // amber transition
-        else if (a < 20) fill = checker ? '#174a95' : '#00349e'; // mature blue thread
-        else             fill = checker ? '#00349e' : '#5d8d47'; // settled blue + olive
+        let isGlitch = false;
+        if (glitchRect) {
+          const sx = originX + (px + CELL/2) * cos - (py + CELL/2) * sin;
+          const sy = originY + (px + CELL/2) * sin + (py + CELL/2) * cos;
+          isGlitch = sy >= glitchRect.top && sy <= glitchRect.bottom;
+        }
 
-        ctx.fillStyle = fill;
-        // Inset slightly so neighbours don't touch — keeps the stitched feel
-        ctx.fillRect(px + 1, py + 1, CELL - 2, CELL - 2);
+        if (isGlitch) {
+          const c = glitchColors[(x + y) & 3];
+          ctx.fillStyle = c;
+          ctx.fillRect(px + 1, py + 1, CELL - 2, CELL - 2);
+          ctx.globalAlpha = 0.2;
+          ctx.fillStyle = '#ff00ff';
+          ctx.fillRect(px + 2, py + 1, CELL - 2, CELL - 2);
+          ctx.fillStyle = '#00ffff';
+          ctx.fillRect(px, py + 1, CELL - 2, CELL - 2);
+          ctx.globalAlpha = 1;
+        } else {
+          const a = age[x][y];
+          const checker = ((x + y) & 1);
+          let fill;
+          if (a < 2)       fill = checker ? '#f6921e' : '#ffca05';
+          else if (a < 6)  fill = checker ? '#fcb813' : '#f9a51a';
+          else if (a < 20) fill = checker ? '#174a95' : '#00349e';
+          else             fill = checker ? '#00349e' : '#5d8d47';
+          ctx.fillStyle = fill;
+          ctx.fillRect(px + 1, py + 1, CELL - 2, CELL - 2);
+        }
       }
     }
 
@@ -1369,6 +1397,7 @@
   window.addEventListener('pointerup', () => drawing = false);
 
   window.addEventListener('resize', resize);
+  window.addEventListener('scroll', () => { draw(); });
   // Re-seed once after webfonts settle so patterns end up centred on the
   // final layout (not the pre-font layout). We re-resize THEN re-seed,
   // rather than chaining multiple resize-only calls, so cells are placed at
