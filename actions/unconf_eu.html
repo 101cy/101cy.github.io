@@ -6,7 +6,7 @@
 <title>Freedom. Democracy. Internet — 101.CY Unconference 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* Cyprus EU Presidency 2026 palette (extracted from the official site CSS) */
   :root {
@@ -698,6 +698,217 @@
     .colophon { padding: 28px 16px 20px; font-size: 14px; }
   }
 
+  /* ===========================================================
+     GLITCH ZONE — Digital Week programme, separate from the cloth
+     Full-bleed navy screen before the unconference begins.
+     =========================================================== */
+  .week-glitch {
+    position: relative;
+    z-index: 5;
+    width: 100vw;
+    left: calc(50% - 50vw);
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 24px max(var(--cell), 14px);
+    margin: 0;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+  .week-glitch-inner {
+    width: 100%;
+    max-width: calc(var(--cell) * 25);
+    margin: 0 auto;
+    pointer-events: none;
+  }
+  .week-glitch .dos-terminal {
+    pointer-events: auto;
+  }
+
+  /* ===========================================================
+     DEBIAN INSTALLER WEEK PROGRAMME
+     Authentic whiptail/ncurses TUI palette:
+       screen bg  #000080  (dark navy — behind the dialog)
+       dialog bg  #0000aa  (standard ncurses blue)
+       border     #ffffff  (white)
+       selected   #000000 on #00aaaa (black on cyan — real whiptail)
+       dim text   #aaaacc
+       cyan label #55ffff
+     =========================================================== */
+  .dos-terminal {
+    position: relative;
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 17px;
+    line-height: 1.55;
+    background: #0000aa;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    box-shadow: 3px 3px 0 #000011;
+    outline: none;
+    cursor: default;
+    padding-top: 16px;
+  }
+  /* Title embedded in the top border (fieldset/legend technique) */
+  .dos-box-title {
+    position: absolute;
+    top: 0;
+    left: 2ch;
+    transform: translateY(-50%);
+    background: #0000aa;
+    color: #ffffff;
+    padding: 0 8px;
+    font-size: 0.85em;
+    line-height: 1.2;
+    white-space: nowrap;
+    font-weight: 500;
+    margin: 0;
+    max-width: none;
+    text-shadow: none;
+  }
+  /* Event list */
+  .dos-menu {
+    padding: 12px 0 6px;
+  }
+  .dos-menu-item {
+    padding: 3px 16px;
+    cursor: pointer;
+    user-select: none;
+    display: grid;
+    grid-template-columns: 1.1em 5.5em minmax(0,1fr) auto;
+    gap: 0 20px;
+    align-items: baseline;
+    color: #ffffff;
+  }
+  .dos-menu-item:hover:not(.active) { background: rgba(0,170,170,0.25); }
+  /* Selected: black on cyan — the real whiptail sellistbox colour */
+  .dos-menu-item.active { background: #00aaaa; color: #000000; }
+  .dos-menu-item.focal:not(.active) .dos-mi-name { color: #ffff55; }
+  .dos-mi-arrow { color: #55ffff; }
+  .dos-menu-item.active .dos-mi-arrow { color: #000000; }
+  .dos-mi-date  { color: #aaaadd; white-space: nowrap; }
+  .dos-menu-item.active .dos-mi-date { color: #000000; }
+  .dos-mi-name  { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dos-mi-loc   { font-size: 0.75em; color: #9999cc; text-align: right; white-space: nowrap; }
+  .dos-menu-item.active .dos-mi-loc { color: #000000; }
+  /* Separator — | with horizontal line between, no box corners */
+  .dos-sep {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    height: 1.3em;
+    padding: 0 16px;
+    flex-shrink: 0;
+  }
+  .dos-sep-line {
+    flex: 1;
+    height: 1px;
+    background: #ffffff;
+    margin: 0 2px;
+  }
+  /* Detail panel */
+  .dos-detail {
+    padding: 8px 16px 12px;
+    min-height: 120px;
+  }
+  .dos-detail-title {
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .dos-detail-meta {
+    display: grid;
+    grid-template-columns: 3.2em 1fr;
+    gap: 1px 14px;
+    margin-bottom: 10px;
+    font-size: 0.85em;
+  }
+  .dos-detail-key { color: #55ffff; }
+  .dos-detail-val { color: #ffffff; }
+  .dos-detail-body {
+    color: #ccccee;
+    line-height: 1.7;
+    max-width: none;
+    margin-bottom: 10px;
+  }
+  /* Reset global page p styles inside the terminal */
+  .dos-detail-body p {
+    margin: 0 0 0.75em;
+    max-width: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-shadow: none;
+  }
+  .dos-detail-body p:last-child { margin-bottom: 0; }
+  /* Link button: black on cyan — same as whiptail button */
+  .dos-detail-link {
+    display: inline-block;
+    color: #000000;
+    background: #00aaaa;
+    text-decoration: none;
+    padding: 2px 10px;
+    font-size: 0.85em;
+    font-weight: 500;
+  }
+  .dos-detail-link:hover { background: #55ffff; color: #000000; text-decoration: none; }
+  /* Status bar */
+  .dos-statusbar {
+    padding: 4px 16px 8px;
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    font-size: 0.75em;
+    color: #aaaadd;
+  }
+  .dos-statusbar kbd {
+    color: #ffffff;
+    font-family: inherit; font-size: inherit;
+    background: none; border: none; padding: 0;
+  }
+  /* Blinking block cursor */
+  .dos-cursor-blink {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: #ffffff;
+    margin-left: 2px; vertical-align: middle;
+    animation: dbcBlink 1.1s step-end infinite;
+  }
+  @keyframes dbcBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+  /* Mobile — hide overflow columns; keep dates */
+  @media (max-width: 720px) {
+    .week-glitch {
+      align-items: flex-start;
+      padding-top: 20px;
+      padding-bottom: 28px;
+    }
+    .dos-terminal {
+      padding-top: 10px;
+    }
+    .dos-statusbar,
+    .dos-sep-foot,
+    .dos-mi-loc { display: none; }
+    .dos-menu-item { grid-template-columns: 1.1em 5.5em minmax(0, 1fr); }
+    /* Wrapped title needs document flow — absolute legend overlaps menu */
+    .dos-box-title {
+      position: static;
+      transform: none;
+      left: auto;
+      text-align: center;
+      white-space: normal;
+      max-width: none;
+      padding: 2px 12px 14px;
+      line-height: 1.35;
+    }
+    .dos-menu {
+      padding-top: 4px;
+    }
+    .dos-detail { padding: 10px 14px 14px; }
+  }
+
   /* ===== Mobile composition =====
      Symmetric centred column with wider GoL gutters on both sides. The cloth
      stays mirror-symmetric on its vertical axis; the living lace breathes
@@ -745,6 +956,27 @@
 <body>
 
 <canvas id="life" aria-hidden="true"></canvas>
+
+<!-- GLITCH ZONE — Digital Week programme, before the unconference cloth -->
+<section class="week-glitch week-focus" aria-label="Cyprus Open Digital Futures Week programme">
+  <div class="week-glitch-inner">
+    <div id="dos-week" class="dos-terminal" tabindex="0"
+         role="application"
+         aria-label="Cyprus Open Digital Futures Week programme — use arrow keys to navigate">
+      <div class="dos-box-title">Cyprus Open Digital Futures Week</div>
+      <nav class="dos-menu" id="dos-menu" role="listbox" aria-label="Week events"></nav>
+      <div class="dos-sep" aria-hidden="true"><span>|</span><span class="dos-sep-line"></span><span>|</span></div>
+      <div class="dos-detail" id="dos-detail"
+           role="region" aria-label="Event details" aria-live="polite"></div>
+      <div class="dos-sep dos-sep-foot" aria-hidden="true"><span>|</span><span class="dos-sep-line"></span><span>|</span></div>
+      <div class="dos-statusbar" aria-hidden="true">
+        <span><kbd>↑↓</kbd> navigate</span>
+        <span><kbd>Enter</kbd> open link</span>
+        <span><kbd>click</kbd> select</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Edge potamoi — continuous vertical rivers running the full viewport height,
      framing the whole cloth on left and right like a tablecloth's hem. -->
@@ -849,7 +1081,7 @@
   <!-- SCHEDULE -->
   <section class="lk">
     <div class="lk-inner">
-      <h2 class="with-motif"><span class="woven">An initial programme</span></h2>
+      <h2 class="with-motif"><span class="woven">Unconference programme</span></h2>
       <p class="eyebrow">Monday, 15 June 2026 at <a href="https://cyens.org.cy/" target="_blank" rel="noopener">CYENS</a>, Nicosia.</p>
       <ul class="schedule">
         <li><span class="t">10:30</span><span class="dots"></span><span class="e">Gathering</span></li>
@@ -930,32 +1162,6 @@
         <span class="name"><a href="https://youtu.be/XCPZ5iQLlnA?si=8q3l7NRx6_06FR3_" target="_blank" rel="noopener">The Basics</a></span><span class="sep"></span>
         <span class="name"><a href="https://youtu.be/WQj12jmLGr4?si=AM660pl2L7BUAZVX" target="_blank" rel="noopener">The potential</a></span>
       </p>
-    </div>
-  </section>
-
-  <hr class="divider" aria-hidden="true">
-
-  <!-- THE WEEK -->
-  <section class="lk week-focus">
-    <div class="lk-inner">
-      <h2 class="with-motif"><span class="woven">Cyprus Open Digital Futures Week</span></h2>
-      
-      <ul class="schedule week">
-        <li><span class="t">June 13</span><span class="dots"></span><span class="e"><b>Kick-off BBQ</b><em>Pykni Picnic Site, Paphos</em></span></li>
-        <li><span class="t">June 14</span><span class="dots"></span><span class="e"><b>Libre Art @ NeMe</b><em><a href="https://neme.org" target="_blank" rel="noopener">NeMe Arts Centre</a>, Limassol</em></span></li>
-        <li class="focal"><span class="t">June 15</span><span class="dots"></span><span class="e"><b>Freedom. Democracy. Internet.</b><em>Unconference at <a href="https://cyens.org.cy/" target="_blank" rel="noopener">CYENS</a>, Nicosia</em></span></li>
-        <li><span class="t">June 16</span><span class="dots"></span><span class="e"><b>Open Source & the EU</b><em><a href="https://openforumeurope.org/events/open-source-and-the-european-union-cyprus-ofe-capital-series/" target="_blank" rel="noopener">OFE Capital Series</a> at <a href="https://www.cyi.ac.cy/" target="_blank" rel="noopener">The Cyprus Institute</a>, Nicosia — registration required</em></span></li>
-        <li><span class="t">June 17–18</span><span class="dots"></span><span class="e"><b>Shaping the Next Digital Frontier</b><em><a href="https://cy26digitalconference.com/" target="_blank" rel="noopener">Official Presidency Conference</a>, Nicosia — registration required</em></span></li>
-      </ul>
-
-      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px dashed rgba(0,52,158,0.25);">
-        <h3 style="font-size: 18px; margin: 0 0 12px;">Libre Art @ NeMe — Sunday 14 June, 19:00</h3>
-        <p style="font-style: italic; color: var(--thread-2);">An informal night dedicated to libre and open source art.</p>
-        <p>As Cyprus prepares to wrap up its EU Presidency contributing to the management of our technological futures, the local Free and Open Source community calls to all of our friends to gather and reinforce paradigms where libre culture, including but also beyond software, provides viable and hopeful alternatives of openness, transparency, repair, autonomy, and meaningful participation.</p>
-        <p>Bring your own bottle &amp; snacks, glitches, noise, visuals, code, zines and posters, performances, unfinished experiments, strange tools, old laptops, hacked devices, impossible ideas, spontaneous live interventions, beautiful failures, conversations, pirate aesthetics, digital disobedience, awkward prototypes, collective imagination and temporary autonomous atmospheres.</p>
-        <p>We come together to explore what artistic practice can look like beyond platform capitalism, algorithmic predictability, surveillance culture, and locked-down creative tools.</p>
-        <p>Part of the Cyprus Open Digital Futures Week &mdash; <a href="https://cryptpad.fr/doc/#/2/doc/edit/HmCpT6KpBnbi2lZDWBgSRung/" target="_blank" rel="noopener">thoughts &amp; suggestions welcome</a>.</p>
-      </div>
     </div>
   </section>
 
@@ -1283,12 +1489,28 @@
   }
 
   /* ----- Render the tilted grid ----- */
+  function syncPotamosEdges() {
+    const wg = document.querySelector('.week-glitch');
+    document.querySelectorAll('.potamos-edge').forEach(el => {
+      if (!wg) { el.style.top = '0'; return; }
+      el.style.top = Math.max(0, wg.getBoundingClientRect().bottom) + 'px';
+    });
+  }
+
   function draw() {
     const w = window.innerWidth, h = window.innerHeight;
 
     // background
     ctx.fillStyle = '#f5f3ec';
     ctx.fillRect(0, 0, w, h);
+
+    // Glitch zone: navy screen behind the week panel (canvas shows through HTML)
+    const weekFocus = document.querySelector('.week-focus');
+    const glitchRect = weekFocus ? weekFocus.getBoundingClientRect() : null;
+    if (glitchRect) {
+      ctx.fillStyle = '#000080';
+      ctx.fillRect(0, glitchRect.top, w, glitchRect.height);
+    }
 
     ctx.save();
     // Lace centred on the viewport (does NOT scroll with the document) — so
@@ -1314,8 +1536,6 @@
     ctx.stroke();
 
     // Glitch zone: cells behind the week panel render in high-voltage palette
-    const weekFocus = document.querySelector('.week-focus');
-    const glitchRect = weekFocus ? weekFocus.getBoundingClientRect() : null;
     const cos = Math.cos(Math.PI / 4), sin = Math.sin(Math.PI / 4);
     const glitchColors = ['#ff00ff', '#00ffff', '#ffff00', '#00ff88'];
 
@@ -1357,6 +1577,7 @@
     }
 
     ctx.restore();
+    syncPotamosEdges();
   }
 
   function loop(t) {
@@ -1410,6 +1631,167 @@
   seed();
   draw();
   requestAnimationFrame(loop);
+})();
+</script>
+
+<script>
+/* ============================================================
+   WEEK PROGRAMME — ncurses-style TUI
+   Arrow keys / click to navigate. Enter opens link.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var EVENTS = [
+    {
+      id:       'bbq',
+      date:     'Fri Jun 13',
+      title:    'Kick-off BBQ',
+      venue:    'Pykni Picnic Site',
+      location: 'Paphos',
+      time:     'Afternoon',
+      focal:    false,
+      desc:     'An informal gathering to kick off the Cyprus Open Digital Futures Week together. Open-air conversation, community, and the start of something good.',
+      link:     null,
+      linkText: null,
+    },
+    {
+      id:       'neme',
+      date:     'Sat Jun 14',
+      title:    'Libre Art @ NeMe',
+      venue:    'NeMe Arts Centre',
+      location: 'Limassol',
+      time:     '19:00',
+      focal:    false,
+      desc:     'An informal night dedicated to libre and open source art.\n\nAs Cyprus prepares to wrap up its EU Presidency contributing to the management of our technological futures, the local Free and Open Source community calls to all of our friends to gather and reinforce paradigms where libre culture, including but also beyond software, provides viable and hopeful alternatives of openness, transparency, repair, autonomy, and meaningful participation.\n\nBring your own bottle & snacks, glitches, noise, visuals, code, zines and posters, performances, unfinished experiments, strange tools, old laptops, hacked devices, impossible ideas, spontaneous live interventions, beautiful failures, conversations, pirate aesthetics, digital disobedience, awkward prototypes, collective imagination and temporary autonomous atmospheres.\n\nWe come together to explore what artistic practice can look like beyond platform capitalism, algorithmic predictability, surveillance culture, and locked-down creative tools.',
+      link:     'https://neme.org',
+      linkText: 'neme.org',
+    },
+    {
+      id:       'unconf',
+      date:     'Mon Jun 15',
+      title:    'Freedom. Democracy. Internet.',
+      venue:    'CYENS',
+      location: 'Nicosia',
+      time:     '10:30 \u2013 18:00',
+      focal:    true,
+      desc:     'THIS PAGE :) \n\n Open space unconference with participant-led sessions, session planning, parallel breakouts, and a potluck lunch at midday. No fixed agenda \u2014 shaped entirely by those in the room.',
+      link:     'https://cryptpad.fr/form/#/2/form/view/yQcaU1JFhUvWp4Ocvi6VkFMoZlN8LJwJjRJW2885CFo/',
+      linkText: 'Register here',
+    },
+    {
+      id:       'ofe',
+      date:     'Tue Jun 16',
+      title:    'Open Source & the EU',
+      venue:    'The Cyprus Institute',
+      location: 'Nicosia',
+      time:     'TBC',
+      focal:    false,
+      desc:     'OFE Capital Series event exploring open source policy and the European Union institutional landscape. Registration required.',
+      link:     'https://openforumeurope.org/events/open-source-and-the-european-union-cyprus-ofe-capital-series/',
+      linkText: 'openforumeurope.org',
+    },
+    {
+      id:       'frontier',
+      date:     'Wed Jun 17',
+      title:    'Shaping the Next Digital Frontier',
+      venue:    'Official Presidency Conference',
+      location: 'Nicosia',
+      time:     'Jun 17\u201318',
+      focal:    false,
+      desc:     'Organized by the Deputy Ministry of Research, Innovation and Digital Policy in the context of the Cyprus Presidency of the Council of the European Union. With its prestigious line-up of speakers and participants, the conference aspires to be a landmark gathering in shaping Europe’s digital and AI future. The event will bring together high-level leaders and distinguished experts from government, the European Commission, industry, academia, and civil society. It will serve as a unique platform to debate the transformative potential of the digital landscape and artificial intelligence across Europe, while also providing the opportunity to exchange perspectives at the highest policy and expert level on the challenges and opportunities that lie ahead. Registration required.',
+      link:     'https://cy26digitalconference.com/',
+      linkText: 'cy26digitalconference.com',
+    },
+  ];
+
+  var selected = 2;
+  var menuEl   = document.getElementById('dos-menu');
+  var detailEl = document.getElementById('dos-detail');
+  var termEl   = document.getElementById('dos-week');
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function renderMenu() {
+    var html = '';
+    for (var i = 0; i < EVENTS.length; i++) {
+      var ev  = EVENTS[i];
+      var cls = 'dos-menu-item'
+              + (i === selected ? ' active' : '')
+              + (ev.focal      ? ' focal'  : '');
+      var arrow = i === selected ? '\u25b6' : ' ';
+      html += '<div class="' + cls + '" data-idx="' + i + '"'
+            + ' role="option" aria-selected="' + (i === selected) + '">'
+            + '<span class="dos-mi-arrow">' + arrow + '</span>'
+            + '<span class="dos-mi-date">'  + esc(ev.date)     + '</span>'
+            + '<span class="dos-mi-name">'  + esc(ev.title)    + '</span>'
+            + '<span class="dos-mi-loc">'   + esc(ev.location) + '</span>'
+            + '</div>';
+    }
+    menuEl.innerHTML = html;
+  }
+
+  function formatDesc(desc) {
+    return desc
+      .split(/\n\s*\n/)
+      .map(function (p) { return p.trim(); })
+      .filter(Boolean)
+      .map(function (p) { return '<p>' + esc(p) + '</p>'; })
+      .join('');
+  }
+
+  function renderDetail() {
+    var ev   = EVENTS[selected];
+    var html = '<div class="dos-detail-title">' + esc(ev.title) + '</div>'
+             + '<div class="dos-detail-meta">'
+             +   '<span class="dos-detail-key">Time</span>'
+             +   '<span class="dos-detail-val">' + esc(ev.time) + '</span>'
+             +   '<span class="dos-detail-key">Venue</span>'
+             +   '<span class="dos-detail-val">' + esc(ev.venue) + '</span>'
+             +   '<span class="dos-detail-key">City</span>'
+             +   '<span class="dos-detail-val">' + esc(ev.location) + '</span>'
+             + '</div>'
+             + '<div class="dos-detail-body">' + formatDesc(ev.desc) + '</div>';
+    if (ev.link) {
+      html += '<a href="' + ev.link + '" target="_blank" rel="noopener"'
+            + ' class="dos-detail-link">[ ' + esc(ev.linkText) + ' ]</a>';
+    }
+    detailEl.innerHTML = html;
+  }
+
+  function update() {
+    renderMenu();
+    renderDetail();
+    window.dispatchEvent(new Event('scroll'));
+  }
+
+  menuEl.addEventListener('click', function (e) {
+    var item = e.target.closest('.dos-menu-item');
+    if (!item) return;
+    selected = parseInt(item.getAttribute('data-idx'), 10);
+    update();
+    termEl.focus();
+  });
+
+  termEl.addEventListener('keydown', function (e) {
+    var moved = false;
+    if      (e.key === 'ArrowDown') { selected = (selected + 1) % EVENTS.length;                   moved = true; }
+    else if (e.key === 'ArrowUp')   { selected = (selected - 1 + EVENTS.length) % EVENTS.length;   moved = true; }
+    else if (e.key === 'Home')      { selected = 0;                  moved = true; }
+    else if (e.key === 'End')       { selected = EVENTS.length - 1;  moved = true; }
+    else if (e.key === 'Enter') {
+      var lnk = detailEl.querySelector('.dos-detail-link');
+      if (lnk) lnk.click();
+    }
+    if (moved) { e.preventDefault(); update(); }
+  });
+
+  update();
 })();
 </script>
 </body>
