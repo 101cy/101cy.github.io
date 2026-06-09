@@ -878,6 +878,33 @@
     animation: dbcBlink 1.1s step-end infinite;
   }
   @keyframes dbcBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+  /* Scroll-down hint — sits below the terminal in normal flow */
+  .week-scroll-hint {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    pointer-events: none;
+  }
+  .week-scroll-hint-inner {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 0.72em;
+    color: #55ffff;
+    letter-spacing: 0.08em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    animation: scrollHintBounce 1.6s ease-in-out infinite;
+    user-select: none;
+  }
+  .week-scroll-hint-inner .shi-arrow {
+    font-size: 1.4em;
+    line-height: 1;
+  }
+  @keyframes scrollHintBounce {
+    0%,100% { transform: translateY(0);   opacity: 0.7; }
+    50%      { transform: translateY(4px); opacity: 1;   }
+  }
   /* Mobile — hide overflow columns; keep dates */
   @media (max-width: 720px) {
     .week-glitch {
@@ -973,6 +1000,12 @@
         <span><kbd>↑↓</kbd> navigate</span>
         <span><kbd>Enter</kbd> open link</span>
         <span><kbd>click</kbd> select</span>
+      </div>
+    </div>
+    <div class="week-scroll-hint" aria-hidden="true">
+      <div class="week-scroll-hint-inner">
+        <span class="shi-label">scroll</span>
+        <span class="shi-arrow">▼</span>
       </div>
     </div>
   </div>
@@ -1159,8 +1192,8 @@
 
       <h3 style="margin-top:22px;">What Open Space can look like</h3>
       <p class="roll" style="margin-top:8px;">
-        <span class="name"><a href="https://youtu.be/XCPZ5iQLlnA?si=8q3l7NRx6_06FR3_" target="_blank" rel="noopener">The Basics</a></span><span class="sep"></span>
-        <span class="name"><a href="https://youtu.be/WQj12jmLGr4?si=AM660pl2L7BUAZVX" target="_blank" rel="noopener">The potential</a></span>
+        <span class="name"><a href="https://youtu.be/XCPZ5iQLlnA" target="_blank" rel="noopener">The Basics</a></span><span class="sep"></span>
+        <span class="name"><a href="https://youtu.be/WQj12jmLGr4" target="_blank" rel="noopener">The potential</a></span>
       </p>
     </div>
   </section>
@@ -1675,7 +1708,7 @@
       location: 'Nicosia',
       time:     '10:30 \u2013 18:00',
       focal:    true,
-      desc:     'THIS PAGE :) \n\n Open space unconference with participant-led sessions, session planning, parallel breakouts, and a potluck lunch at midday. No fixed agenda \u2014 shaped entirely by those in the room.',
+      desc:     'An open space unconference on tech policy, digital rights, and the commons, during Cyprus\u2019s EU Presidency.\n\nParticipant-led sessions, parallel breakouts, and a potluck table at midday. No fixed agenda, shaped entirely by those in the room.\n\nScroll down for the full programme \u2193',
       link:     'https://cryptpad.fr/form/#/2/form/view/yQcaU1JFhUvWp4Ocvi6VkFMoZlN8LJwJjRJW2885CFo/',
       linkText: 'Register here',
     },
@@ -1687,7 +1720,7 @@
       location: 'Nicosia',
       time:     '12:00 \u2013 18:00',
       focal:    false,
-      desc:     'OFE Capital Series event exploring open source policy and the European Union institutional landscape.\n\nRegistration required.',
+      desc:     'Marking the eight instalment of our cyclical events, Capital Series Cyprus will bring Brussels-level discussions of open source policy directly to Nicosia. This event will provide a unique opportunity for the local open source community to directly engage with EU and national policymakers to better understand policies that impact the Cypriot market.\n\nThe event will explore how open source and open technologies support Europe’s digital ambitions, from cybersecurity and digital public infrastructure to innovation and competitiveness. Together with policymakers, industry representatives, researchers and members of the open source community, we will discuss how European digital policies translate into national opportunities and challenges for the Cypriot ecosystem. The event will also create space for dialogue between EU institutions and local actors working with open technologies.\n\nRegistration required.',
       link:     'https://openforumeurope.org/events/open-source-and-the-european-union-cyprus-ofe-capital-series/',
       linkText: 'openforumeurope.org',
     },
